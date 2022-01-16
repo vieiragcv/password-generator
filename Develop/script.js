@@ -1,4 +1,8 @@
 // Assignment code here
+function generatePassword() {
+  var randomKey = 1; 
+  return randomKey; 
+}
 
 
 // Get references to the #generate element

@@ -1,23 +1,43 @@
-// Creating the main function that will execute once button is
+/*  --------------------------------------- GENERAL SCOPE -----------------------------
+    
+1st interaction: Determining Length
 
-// 1 FUNCTION TO DO IT ALL! generatePassword();
-    // starts interacition with user and returns password on screen
+2nd interaction: Determining Acceptable Char types
 
-    //1st interaction: Criteria Selection
-    // 2nd interaction: Determining Length
-    // 3rd interaction: Determining Acceptable Char types
-      // upper case, lower case, numeric, special characters
-    // 4th interaction: Validation of character minimal of 1 character type selected
+- upper case, 
+- lower case, 
+- numeric,
+- special characters.
+
+3rd interaction: Validation of character minimal of 1 character type selected  
+    
+-------------------------------------------------------------------------------------- */
+
+
+/* ---------------- GLOBAL VARIABLES ------------------------------------------------------*/
+
+var PassCharCount = 0;
+var CharTypes = [false, false, false, false]; // [Uppder Case, Lower Case, Number, Special Characters]
+
+/* -----------------MAIN FUNCTION ---------------------------------------------------------*/
+
 function generatePassword() {
-  var randomKey = CharCount(); 
-  return randomKey;
+  PassCharCount = CharCount(); 
+  defineCharTypes();
+  console.log(CharTypes); 
 }
 
-  // generate 1st alert window
+
+ /*---------------------------------- INTERACTION 1 -----------------------------------
+
+ CharCount function generates 1st alert window, collects and validates user's input,  
+  -                                             logs on console and and returns value.
+  
+  -------------------------------------------------------------------------------------*/
 
 var CharCount = function() {
-var userCharNum = 0;
 
+  var userCharNum = 0;
   while(userCharNum < 8 || userCharNum > 128) {
     userCharNum = window.prompt('How long do you want your password to be? (Min: 8 - Max: 126) ');
     if(userCharNum < 8 || userCharNum > 128) {
@@ -30,6 +50,45 @@ var userCharNum = 0;
     }
   }
 }
+
+ /*---------------------------------- INTERACTION 2 -----------------------------------
+
+
+  
+  -------------------------------------------------------------------------------------*/
+
+
+// Collecting from user the characters types to be used.
+
+function defineCharTypes() {
+
+  while(CharTypes[0] === false && CharTypes[1] === false && CharTypes[2] === false && CharTypes[3] === false){
+    CharTypes[0] = window.confirm("Include Upper Case characters?");
+    CharTypes[1] = window.confirm("Include Lower Case characters?");
+    CharTypes[2] = window.confirm("Include Numbers?");
+    CharTypes[3] = window.confirm("Include Special Characters?");
+    if(CharTypes[0] === false && CharTypes[1] === false && CharTypes[2] === false && CharTypes[3] === false){
+      window.alert("You have to select at least one option. Let's try again!");
+    }
+    else{
+      break;
+    }
+  }
+}
+/* LOGGING TO CHECK */
+for (i = 0; i < 4; i++) {
+  console.log(CharTypes[i]);
+}
+  
+
+
+  /*---------------------------------- INTERACTION 3 -----------------------------------
+
+ 
+  
+  -------------------------------------------------------------------------------------*/
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 

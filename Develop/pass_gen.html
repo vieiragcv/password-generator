@@ -1,0 +1,40 @@
+<html>
+<header>
+	<title>Password Generator</title>
+</header>
+<body>
+	<h1>Password Generator</h1>
+	<input type="button" id="genpass" value="Generate password" onclick="generate_password(8)"> <br><br>
+	<label for="output">Password:</label> <br>
+	<input type="password" id="output" onfocusin="(this.type='text')" onfocusout="(this.type='password')"> <br>
+	<small>Click in password box to see password</small>
+		
+	<script>
+		function generate_password(password_length) {
+			var number_chars = '0123456789';
+			var upper_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			var lower_chars = 'abcdefghijklmnopqrstuvwxyz';
+			var all_chars = number_chars + upper_chars + lower_chars;
+			var rand_pass_arr = Array(password_length);
+			rand_pass_arr[0] = number_chars;
+			rand_pass_arr[1] = upper_chars;
+			rand_pass_arr[2] = lower_chars;
+			rand_pass_arr = rand_pass_arr.fill(all_chars, 3);
+			output = shuffle_array(rand_pass_arr.map(function(x) { return x[Math.floor(Math.random() * x.length)] })).join('');
+			document.getElementById('output').value = output;
+			console.log(output)
+		}
+
+		function shuffle_array(array) {
+			for (var i = array.length - 1; i > 0; i--) {
+				var j = Math.floor(Math.random() * (i + 1));
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+			return array;
+		}
+
+	</script>
+</body>
+</html>

@@ -123,9 +123,9 @@ function defineCharTypes() {
   CharTypes = [false, false, false, false];
 
   while(CharTypes[0] === false && CharTypes[1] === false && CharTypes[2] === false && CharTypes[3] === false){
-    CharTypes[0] = window.confirm("Include Upper Case characters?");
-    CharTypes[1] = window.confirm("Include Lower Case characters?");
-    CharTypes[2] = window.confirm("Include Numbers?");
+    CharTypes[0] = window.confirm("Include Numbers?");
+    CharTypes[1] = window.confirm("Include Upper Case characters?");
+    CharTypes[2] = window.confirm("Include Lower Case characters?");
     CharTypes[3] = window.confirm("Include Special Characters?");
     if(CharTypes[0] === false && CharTypes[1] === false && CharTypes[2] === false && CharTypes[3] === false){
       window.alert("You have to select at least one option. Let's try again!");

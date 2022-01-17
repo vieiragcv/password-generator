@@ -34,7 +34,7 @@ var NumbersRando = false;
 var SpecialRando = false;
 
 
-/*---------------------------RANDOM NUMBER GENERATORS-------------------------------*/
+/*---------------------------PASSWORD GENERATOR USING USER INPUTS--------------------------------*/
 
 
 function getRndInteger(min, max) {
@@ -44,29 +44,25 @@ function getRndInteger(min, max) {
 function randomizeCharacters() {
 
   var j = 0;
-  var k = 0;
   console.log(j);
   console.log(PassCharCount);
   while(j < PassCharCount) {
     if(CharTypes[0] === true) {
       UpperCaseRando = getRndInteger(1, allUpperCase.length);
-      Password[0 + k] = allUpperCase[UpperCaseRando];
+      Password[0 + j] = allUpperCase[UpperCaseRando];
       console.log(Password);
       j++; 
-      k++;
       console.log(j);
       console.log(PassCharCount);
     }
     else{}
-    if(CharTypes[1] === true && k < PassCharCount) {
+    if(CharTypes[1] === true && j < PassCharCount) {
       lowerCaseRando = getRndInteger(1, allLowerCase.length);
-      Password[0 + k] = allLowerCase[lowerCaseRando];
+      Password[0 + j] = allLowerCase[lowerCaseRando];
       console.log(Password); 
       j++; 
-      k++
       console.log(j);
       console.log(PassCharCount);
-
     }
     else if(j === PassCharCount){
       var answer = Password.toString();
@@ -75,12 +71,11 @@ function randomizeCharacters() {
       return answer;
     }
     else{}
-    if(CharTypes[2] === true && k < PassCharCount){
+    if(CharTypes[2] === true && j < PassCharCount){
       NumbersRando = getRndInteger(1, allNumbers.length);
-      Password[0 + k] = allNumbers[NumbersRando];
+      Password[0 + j] = allNumbers[NumbersRando];
       console.log(Password);
       j++; 
-      k++;
       console.log(j);
       console.log(PassCharCount);
 
@@ -90,15 +85,13 @@ function randomizeCharacters() {
       return answer;
     }
     else{}
-    if(CharTypes[3] === true && k < PassCharCount){
+    if(CharTypes[3] === true && j < PassCharCount){
       SpecialRando = getRndInteger(1, allSpecialChar.length);
-      Password[0 + k] = allSpecialChar[SpecialRando];
+      Password[0 + j] = allSpecialChar[SpecialRando];
       console.log(Password);
       j++; 
-      k++;
       console.log(j);
       console.log(PassCharCount);
-
     }
     else if(j === PassCharCount){
       var answer = Password.toString();

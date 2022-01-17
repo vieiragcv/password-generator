@@ -135,24 +135,11 @@ function generate_password(password_length) {
       console.log(result_arr);
       i++;
     }
-    else if(i === pass_length){
-      console.log("AQUI PAROU");
-      finalKey = result_arr.join();
-      console.log(finalKey);
-      return finalKey;
-    }
     else{}
-
     if(CharTypes[1] === true && i < pass_length){
       result_arr[i] = upper_chars[getRndInteger(1, upper_chars.length)];
       console.log(result_arr);
       i++;
-    }
-    else if(i === pass_length){
-      console.log("AQUI PAROU");
-      finalKey = result_arr.join();
-      console.log(finalKey);
-      return finalKey;
     }
     else{}
     if(CharTypes[2] === true && i < pass_length){
@@ -160,23 +147,11 @@ function generate_password(password_length) {
       console.log(result_arr);
       i++;
     }
-    else if(i === pass_length){
-      console.log("AQUI PAROU");
-      finalKey = result_arr.join();
-      console.log(finalKey);
-      return finalKey;
-    }
     else{}
     if(CharTypes[3] === true && i < pass_length){
       result_arr[i] = special_chars[getRndInteger(1, special_chars.length)];
       console.log(result_arr);
       i++;
-    }
-    else if(i === pass_length){
-      console.log("AQUI PAROU");
-      finalKey = result_arr.join();
-      console.log(finalKey);
-      return finalKey;
     }
     else{}
   }

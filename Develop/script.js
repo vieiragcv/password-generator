@@ -19,7 +19,7 @@
 
 var PassCharCount = 0;
 var CharTypes = [false, false, false, false]; // [Uppder Case, Lower Case, Number, Special Characters]
-let Password = new Array(128);
+var Password = new Array(128);
 
 const allLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const allUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -43,51 +43,73 @@ function getRndInteger(min, max) {
 
 function randomizeCharacters() {
 
-  var CharTypeCount=0;
   var j = 0;
-  while(CharTypeCount < PassCharCount) {
-    if(CharTypes[0] === true){
+  var k = 0;
+  console.log(j);
+  console.log(PassCharCount);
+  while(j < PassCharCount) {
+    if(CharTypes[0] === true) {
       UpperCaseRando = getRndInteger(1, allUpperCase.length);
-      CharTypeCount++;
-      console.log(UpperCaseRando);
-      console.log(allUpperCase[UpperCaseRando]);
-      Password[0 + j] = allUpperCase[UpperCaseRando];
+      Password[0 + k] = allUpperCase[UpperCaseRando];
       console.log(Password);
-      j++;
+      j++; 
+      k++;
+      console.log(j);
+      console.log(PassCharCount);
     }
-    if(CharTypes[1] === true){
+    else{}
+    if(CharTypes[1] === true && k < PassCharCount) {
       lowerCaseRando = getRndInteger(1, allLowerCase.length);
-      CharTypeCount++;
-      console.log(lowerCaseRando);
-      console.log(allLowerCase[lowerCaseRando]);
-      Password[0 + j] = allLowerCase[lowerCaseRando];
-      console.log(Password);
-      j++;
-   
+      Password[0 + k] = allLowerCase[lowerCaseRando];
+      console.log(Password); 
+      j++; 
+      k++
+      console.log(j);
+      console.log(PassCharCount);
+
     }
-    if(CharTypes[2] === true){
+    else if(j === PassCharCount){
+      var answer = Password.toString();
+      console.log(Password);
+      console.log(answer);
+      return answer;
+    }
+    else{}
+    if(CharTypes[2] === true && k < PassCharCount){
       NumbersRando = getRndInteger(1, allNumbers.length);
-      CharTypeCount++;
-      console.log(NumbersRando);
-      console.log(allNumbers[NumbersRando]);
-      Password[0 + j] = allNumbers[NumbersRando];
+      Password[0 + k] = allNumbers[NumbersRando];
       console.log(Password);
-      j++;
+      j++; 
+      k++;
+      console.log(j);
+      console.log(PassCharCount);
+
     }
-    if(CharTypes[3] === true){
+    else if(j === PassCharCount){
+      var answer = Password.toString();
+      return answer;
+    }
+    else{}
+    if(CharTypes[3] === true && k < PassCharCount){
       SpecialRando = getRndInteger(1, allSpecialChar.length);
-      CharTypeCount++;
-      console.log(SpecialRando);
-      console.log(allSpecialChar[SpecialRando]);
-      Password[0 + j] = allSpecialChar[SpecialRando];
+      Password[0 + k] = allSpecialChar[SpecialRando];
       console.log(Password);
-      j++;
+      j++; 
+      k++;
+      console.log(j);
+      console.log(PassCharCount);
+
     }
-    console.log(CharTypeCount); 
+    else if(j === PassCharCount){
+      var answer = Password.toString();
+      return answer;
+    }
+    else{}
   }
-  let answer = Password.toString();
+  var answer = Password.toString();
   console.log(Password);
   console.log(answer);
+  console.log(PassCharCount);
   return answer;
 }
 

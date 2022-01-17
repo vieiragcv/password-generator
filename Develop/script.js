@@ -16,69 +16,93 @@
 
 /* ---------------- GLOBAL VARIABLES ------------------------------------------------------*/
 
+
 var PassCharCount = 0;
 var CharTypes = [false, false, false, false]; // [Uppder Case, Lower Case, Number, Special Characters]
+let Password = new Array(128);
 
 const allLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const allUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const allNumbers = [0, 1, 2, 3, 5, 6, 7, 8, 9];
+const allNumbers = ["0","1" ,"2", "3","4","5","6","7","8","9"];
 const allSpecialChar = ["!","@","#","$","%","^","&","*","+","-"];
-var j = 0;
 var count = 0;
 var typesUsedCount = 0;
 
 var lowerCaseRando = false;
-var UperCaseRando = false;
+var UpperCaseRando = false;
 var NumbersRando = false;
 var SpecialRando = false;
 
 
 /*---------------------------RANDOM NUMBER GENERATORS-------------------------------*/
 
+
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function randomizeCharacters() {
-  if(CharTypes[0] === true){
-    lowerCaseRando = getRndInteger(1, allLowerCase.length);
-    console.log(lowerCaseRando);
+
+  var CharTypeCount=0;
+  var j = 0;
+  while(CharTypeCount < PassCharCount) {
+    if(CharTypes[0] === true){
+      UpperCaseRando = getRndInteger(1, allUpperCase.length);
+      CharTypeCount++;
+      console.log(UpperCaseRando);
+      console.log(allUpperCase[UpperCaseRando]);
+      Password[0 + j] = allUpperCase[UpperCaseRando];
+      console.log(Password);
+      j++;
+    }
+    if(CharTypes[1] === true){
+      lowerCaseRando = getRndInteger(1, allLowerCase.length);
+      CharTypeCount++;
+      console.log(lowerCaseRando);
+      console.log(allLowerCase[lowerCaseRando]);
+      Password[0 + j] = allLowerCase[lowerCaseRando];
+      console.log(Password);
+      j++;
+   
+    }
+    if(CharTypes[2] === true){
+      NumbersRando = getRndInteger(1, allNumbers.length);
+      CharTypeCount++;
+      console.log(NumbersRando);
+      console.log(allNumbers[NumbersRando]);
+      Password[0 + j] = allNumbers[NumbersRando];
+      console.log(Password);
+      j++;
+    }
+    if(CharTypes[3] === true){
+      SpecialRando = getRndInteger(1, allSpecialChar.length);
+      CharTypeCount++;
+      console.log(SpecialRando);
+      console.log(allSpecialChar[SpecialRando]);
+      Password[0 + j] = allSpecialChar[SpecialRando];
+      console.log(Password);
+      j++;
+    }
+    console.log(CharTypeCount); 
   }
-  if(CharTypes[1] === true){
-    UperCaseRando = getRndInteger(1, allUpperCase.length);
-    console.log(UperCaseRando);
-  }
-  if(CharTypes[2] === true){
-    NumbersRando = getRndInteger(1, allNumbers.length);
-    console.log(NumbersRando);
-  }
-  if(CharTypes[3] === true){
-    SpecialRando = getRndInteger(1, allSpecialChar.length);
-    console.log(SpecialRando);
-  }
+  let answer = Password.toString();
+  console.log(Password);
+  console.log(answer);
+  return answer;
 }
-
-
 
 
 /* -----------------MAIN FUNCTION ---------------------------------------------------------*/
 
 function generatePassword() {
   PassCharCount = CharCount(); 
+  console.log(PassCharCount);
   defineCharTypes();
   console.log(CharTypes);
-  randomizeCharacters();
+  Password = randomizeCharacters(); 
+  console.log(Password);
+  return Password;
   }
-
-
-
-
-
-
-
-
-
-
 
 
 /*---------------------------------- INTERACTION 1 -----------------------------------
@@ -96,12 +120,14 @@ var CharCount = function() {
       window.alert("Your password size cannot be smaller than 8 or bigger than 128 characters");
     }
     else {
-      console.log(userCharNum);
       window.confirm("You selected " + userCharNum + " characters. Correct?");
-      break;
+      console.log(userCharNum);
+      PassCharCount = userCharNum;
+      return PassCharCount;
     }
   }
 }
+
 
  /*---------------------------------- INTERACTION 2 -----------------------------------
 
@@ -123,10 +149,13 @@ function defineCharTypes() {
     }
     else{
       window.confirm("You Have selected: "  + "\nUpper Case: " + CharTypes[0] + "\nLower Case: " + CharTypes[1] + "\nNumbers: " + CharTypes[2] + "\nSpecial Characters: " + CharTypes[3]);
-      break;
+      console.log(CharTypes);
+      return CharTypes;
     }
   }
 }
+
+
 
 /*---------------------------------- INTERACTION 3 -----------------------------------
 

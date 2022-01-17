@@ -19,27 +19,48 @@
 var PassCharCount = 0;
 var CharTypes = [false, false, false, false]; // [Uppder Case, Lower Case, Number, Special Characters]
 
+var allLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var allUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var allNumbers = [0, 1, 2, 3, 5, 6, 7, 8, 9];
+var allSpecialChar = ["!","@","#","$","%","^","&","*","+","-"];
+var count = 0;
+
 /* -----------------MAIN FUNCTION ---------------------------------------------------------*/
 
 function generatePassword() {
   PassCharCount = CharCount(); 
   defineCharTypes();
-  console.log(CharTypes); 
+  console.log(CharTypes);
+  charTypeCount();
+
+}
+
+/*---------------------------RANDOM NUMBER GENERATORS-------------------------------*/
+
+var charTypeCount = function (){
+  for(i = 0; i < 4; i++) {
+    if(CharTypes[i] === true){
+      count ++;
+    }
+    else;
+  }
+  return count;  
 }
 
 
- /*---------------------------------- INTERACTION 1 -----------------------------------
 
- CharCount function generates 1st alert window, collects and validates user's input,  
-  -                                             logs on console and and returns value.
+
+/*---------------------------------- INTERACTION 1 -----------------------------------
+
+Generates 1st alert window, requesting user to define the number of characters.
   
-  -------------------------------------------------------------------------------------*/
+-------------------------------------------------------------------------------------*/
 
 var CharCount = function() {
 
   var userCharNum = 0;
   while(userCharNum < 8 || userCharNum > 128) {
-    userCharNum = window.prompt('How long do you want your password to be? (Min: 8 - Max: 126) ');
+    userCharNum = window.prompt('How long do you want your password to be? (Min: 8 - Max: 128) ');
     if(userCharNum < 8 || userCharNum > 128) {
       window.alert("Your password size cannot be smaller than 8 or bigger than 128 characters");
     }
@@ -53,14 +74,13 @@ var CharCount = function() {
 
  /*---------------------------------- INTERACTION 2 -----------------------------------
 
-
+Collecting from user the characters types to be used.
   
   -------------------------------------------------------------------------------------*/
 
-
-// Collecting from user the characters types to be used.
-
 function defineCharTypes() {
+  CharTypes = [false, false, false, false];
+ 
 
   while(CharTypes[0] === false && CharTypes[1] === false && CharTypes[2] === false && CharTypes[3] === false){
     CharTypes[0] = window.confirm("Include Upper Case characters?");
@@ -71,22 +91,17 @@ function defineCharTypes() {
       window.alert("You have to select at least one option. Let's try again!");
     }
     else{
+      window.confirm("You Have selected: "  + "\nUpper Case: " + CharTypes[0] + "\nLower Case: " + CharTypes[1] + "\nNumbers: " + CharTypes[2] + "\nSpecial Characters: " + CharTypes[3]);
       break;
     }
   }
 }
-/* LOGGING TO CHECK */
-for (i = 0; i < 4; i++) {
-  console.log(CharTypes[i]);
-}
-  
 
-
-  /*---------------------------------- INTERACTION 3 -----------------------------------
+/*---------------------------------- INTERACTION 3 -----------------------------------
 
  
   
-  -------------------------------------------------------------------------------------*/
+-------------------------------------------------------------------------------------*/
 
 
 // Get references to the #generate element
@@ -103,3 +118,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+

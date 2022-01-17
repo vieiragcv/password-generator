@@ -19,11 +19,24 @@
 var PassCharCount = 0;
 var CharTypes = [false, false, false, false]; // [Uppder Case, Lower Case, Number, Special Characters]
 
-var allLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var allUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var allNumbers = [0, 1, 2, 3, 5, 6, 7, 8, 9];
-var allSpecialChar = ["!","@","#","$","%","^","&","*","+","-"];
+const allLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const allUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const allNumbers = [0, 1, 2, 3, 5, 6, 7, 8, 9];
+const allSpecialChar = ["!","@","#","$","%","^","&","*","+","-"];
+var j = 0;
 var count = 0;
+var typesUsedCount = 0;
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+var lowerCaseRando = getRndInteger(1, allLowerCase.length);
+var UperCaseRando = getRndInteger(1, allUpperCase.length);
+var NumbersRando = getRndInteger(1, allNumbers.length);
+var SpecialRando = getRndInteger(1, allSpecialChar.length);
+
+/* Counts total amount of true values */
+
 
 /* -----------------MAIN FUNCTION ---------------------------------------------------------*/
 
@@ -31,21 +44,15 @@ function generatePassword() {
   PassCharCount = CharCount(); 
   defineCharTypes();
   console.log(CharTypes);
-  charTypeCount();
+  }
 
-}
 
 /*---------------------------RANDOM NUMBER GENERATORS-------------------------------*/
 
-var charTypeCount = function (){
-  for(i = 0; i < 4; i++) {
-    if(CharTypes[i] === true){
-      count ++;
-    }
-    else;
-  }
-  return count;  
-}
+
+
+
+
 
 
 
@@ -74,7 +81,7 @@ var CharCount = function() {
 
  /*---------------------------------- INTERACTION 2 -----------------------------------
 
-Collecting from user the characters types to be used.
+Resets char type selections and requests user for type selection
   
   -------------------------------------------------------------------------------------*/
 

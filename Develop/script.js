@@ -27,15 +27,38 @@ var j = 0;
 var count = 0;
 var typesUsedCount = 0;
 
+var lowerCaseRando = false;
+var UperCaseRando = false;
+var NumbersRando = false;
+var SpecialRando = false;
+
+
+/*---------------------------RANDOM NUMBER GENERATORS-------------------------------*/
+
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
-var lowerCaseRando = getRndInteger(1, allLowerCase.length);
-var UperCaseRando = getRndInteger(1, allUpperCase.length);
-var NumbersRando = getRndInteger(1, allNumbers.length);
-var SpecialRando = getRndInteger(1, allSpecialChar.length);
 
-/* Counts total amount of true values */
+function randomizeCharacters() {
+  if(CharTypes[0] === true){
+    lowerCaseRando = getRndInteger(1, allLowerCase.length);
+    console.log(lowerCaseRando);
+  }
+  if(CharTypes[1] === true){
+    UperCaseRando = getRndInteger(1, allUpperCase.length);
+    console.log(UperCaseRando);
+  }
+  if(CharTypes[2] === true){
+    NumbersRando = getRndInteger(1, allNumbers.length);
+    console.log(NumbersRando);
+  }
+  if(CharTypes[3] === true){
+    SpecialRando = getRndInteger(1, allSpecialChar.length);
+    console.log(SpecialRando);
+  }
+}
+
+
 
 
 /* -----------------MAIN FUNCTION ---------------------------------------------------------*/
@@ -44,10 +67,11 @@ function generatePassword() {
   PassCharCount = CharCount(); 
   defineCharTypes();
   console.log(CharTypes);
+  randomizeCharacters();
   }
 
 
-/*---------------------------RANDOM NUMBER GENERATORS-------------------------------*/
+
 
 
 
